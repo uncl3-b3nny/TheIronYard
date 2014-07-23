@@ -1,0 +1,27 @@
+character_1 = {
+	name:"Mario",
+	body_structure"Short and fat"
+	clothing: ["Red Hats", "overalls",":{  )"],
+	health: 100,
+	damage: 2}
+
+	character_2 = snips {
+	name: "Snips",
+	body_strucutre: "quadraped",
+	clothing: ["Cow costume", 
+	"fur armor", ":)"]
+	health: 1000
+	damage: 20
+	}
+
+	character_3 = {
+		name: "the iron barth"
+		body_structure: "steely"
+		clothing: ["tuxes, khakis, flanels"]
+		health: 10
+		damage: 5
+	}
+
+	char_array = [character_1, character_2, character_3]
+
+	char_array.shuffle(0)
