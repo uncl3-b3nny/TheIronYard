@@ -1,0 +1,159 @@
+#bugs: show what output for split, busts before 21!(my sum function is failing), split hands are still kicking back undefined methods
+# #Set players
+# dealer 
+# player
+
+#SHUFFLE
+@deck = (10..10).to_a * 12 + (1..9).to_a * 4 +(11..11).to_a * 4
+print @deck.shuffle!
+
+#DEAL
+##I would like to build a settings group, where users can input, and save their game preferences
+@dealer_hand_sum = 0
+@player_hand_sum = 0
+def deal
+	@n = 0
+	@deal_increment = 1
+	@hand_size = 2
+	@number_of_players = 2
+	@dealer_hand = []
+	@player_hand = []
+		# Can i make these a hash for easier coding?
+		while @hand_size >= @n
+			@dealer_hand = @dealer_hand + @deck[@n,@deal_increment]
+			@n += 1
+			@player_hand = @player_hand + @deck[@n,@deal_increment]
+			@n += 1
+		end
+end
+
+deal
+print @dealer_hand
+print @player_hand
+#PLAY
+## Players: Hit, Stand, Split, Double, Surrender
+## dealer: ""
+
+### 1. Check for dealer black jack 2. Player Loop: prompt, deal one card, check for bust 3. complete all player Loops 4. dealer loop: check 15, deal 1 card, check bust 5. check victory 
+if @dealer_hand == 21
+ 		puts "Dealer Black Jack! You lose!"
+ 	else
+end
+
+prompt = "please type either, 'hit', 'stand', 'split', 'double', or 'surrender'."
+# can I make this a hash for easier coding?
+puts prompt
+choice = gets.chomp.downcase
+
+#player loop
+while choice == "hit"
+	@player_hand = @player_hand + @deck[@n,@deal_increment]
+	@n+1
+	print @player_hand
+	@player_hand.each { |x| @player_hand_sum += x }
+	print @player_hand.each { |x| @player_hand_sum += x }
+	if @player_hand_sum > 21
+			puts "Bust!" 
+			break
+	 	else (@player_hand + @deck[@n+1,@deal_increment])
+	 		@n += 1
+	 		puts prompt
+	 		choice = gets.chomp
+ 	end
+end
+		
+while choice == "stand"
+	print @player_hand
+	break
+end
+
+if choice == "split"
+	@split_hand_1 = @player_hand[0]
+	@split_hand_2 = @player_hand[1]
+	@split_hand_1.to_a
+	@split_hand_2.to_a
+	while choice == "hit"
+		@split_hand_1 = @split_hand_1 + @deck[@n,@deal_increment]
+		@n+1
+		print @split_hand_1
+		@split_hand_1.each { |x| @split_hand_1_sum += x }
+		puts @split_hand_1.each { |x| @split_hand_1_sum += x }
+		 if @split_hand_1_sum > 21
+				puts "Bust!" 
+				break
+		 	else (@split_hand_1 + @deck[@n+1,@deal_increment])
+		 		@n += 1
+		 		puts prompt
+		 		choice = gets.chomp
+	 	end
+	end
+		
+ 	while choice == "hit"
+	@split_hand_2 = @split_hand_2 + @deck[@n,@deal_increment]
+	@n+1
+	print @split_hand_2
+	@split_hand_2.each { |x| @split_hand_2_sum += x }
+	puts @split_hand_2.each { |x| @split_hand_2_sum += x }
+	if @split_hand_2_sum > 21
+			puts "Bust!" 
+			break
+	 	else (@split_hand_2 + @deck[@n+1,@deal_increment])
+	 		@n += 1
+	 		puts prompt
+	 		choice = gets.chomp
+ 	end 
+ end
+end
+@dealer_hand.each { |x| @dealer_hand_sum += x }
+			puts @dealer_hand.each { |x| @dealer_hand_sum += x }
+#dealer loop
+	if @split_hand_1 > 0
+		if (@split_hand_1 <= 21) || (@split_hand_2 <= 21)
+			while @dealer_hand_sum < 15
+			@dealer_hand = @dealer_hand + @deck[@n,@deal_increment]
+			print @dealer_hand
+			@dealer_hand.each { |x| @dealer_hand_sum += x }
+			puts @dealer_hand.each { |x| @dealer_hand_sum += x }
+				if @dealer_hand_sum > 21
+						puts "Dealer Bust! You Win!" 
+						break
+				 	elsif (@player_hand_sum > @dealer_hand_sum) && (@dealer_hand_sum >= 15)
+					 		puts "Victory!"
+					 		break	
+					elsif (@dealer_hand_sum > @player_hand_sum) && (@dealer_hand_sum >= 15)
+					 		puts "Dealer wins!"
+					 		break	
+					else puts "DEALER HAND #{@dealer_hand}"
+						@n+1#number of hits! I think I may need to combine my loops for appropriate order of dealing
+					end
+			end
+		else
+		end	
+		
+	elsif
+		@player_hand_sum <= 21
+		while @dealer_hand_sum < 15
+			@dealer_hand = @dealer_hand + @deck[@n,@deal_increment]
+			print @dealer_hand
+			@dealer_hand.each { |x| @dealer_hand_sum += x }
+			puts @dealer_hand.each { |x| @dealer_hand_sum += x }
+			if @dealer_hand_sum > 21
+					puts "Dealer Bust! You Win!" 
+					break
+			 	elsif (@player_hand_sum > @dealer_hand_sum) && (@dealer_hand_sum >= 15)
+				 		puts "Victory!"
+				 		break	
+				elsif (@dealer_hand_sum > @player_hand_sum) && (@dealer_hand_sum >= 15)
+				 		puts "Dealer wins!"
+				 		break	
+				else puts "DEALER HAND #{@dealer_hand}"
+					@n+1#number of hits! I think I may need to combine my loops for appropriate order of dealing
+			end
+		end
+	else puts "Dealer wins!"
+	end
+# #For grabbing values from multidimensional arrays
+# deck.shuffle[0][0,2]
+# deck[1][0,2]
+
+#dealer hits on 15 and below

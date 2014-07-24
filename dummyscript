@@ -1,0 +1,10 @@
+while @dealer_hand < 15
+	@dealer_hand = @dealer_hand + @deck[@n,@deal_increment]
+	@dealer_hand_sum = 0
+	@dealer_hand.each { |x| dealer_hand_sum += x }
+	if @dealer_hand > 21
+			puts "Bust!" 
+	 	elsif @dealer_hand_sum > @dealer_hand_sum && (@dealer_hand.sum < 22)
+	 		puts "Victory!"
+	 	else (@dealer_hand + @deck[@n+1,@deal_increment])
+	 		@n += 1
