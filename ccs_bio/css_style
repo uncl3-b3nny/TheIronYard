@@ -39,7 +39,37 @@ div.cylon_eye {
         @keyframes move_eye { from { margin-left:-20%; } to { margin-left:100%; }  }
 }
 
-div.Chun_Kuk_Do {
-  border: 5px solid red;
+
+a.harry_potter:visited {
+  color: green;
 }
+a:hover {
+  changes the tag text that appears when you hover your mouse over the selection
+}
+
+
+  body { background-image:url('image_name.jpg');}
+
+div {
+  border-radius: round them corners. Can i build circles?
+  text-indent: 3px DO NOT USE THIS. Google SEO will PUNISH you.
+  white-space:;
+  word-spacing: 
+  text-transform: none, capitalize, lowercase;
+  padding: spacing within an element;
+  margin:spacing at the sides of the page;
+  font-size: large;
+  font-size: medium;
+  font-size: 12px;
+  border: 1px solid red;
+  clear: both;
+  float: left;
+  background-color: transparent red;
+  font-family: "Wingdings";
+  text-shadow: 3px 4px 5px;
+
+}
+
+CLEAR FIX CSS
+
 
