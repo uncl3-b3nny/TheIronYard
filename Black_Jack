@@ -4,13 +4,13 @@
 # player
 
 #SHUFFLE
-@deck = (10..10).to_a * 12 + (1..9).to_a * 4 +(11..11).to_a * 4
+@deck = (10..10).to_a * 16 + (2..9).to_a * 4 +(11..11).to_a * 4
 print @deck.shuffle!
 
 #DEAL
 ##I would like to build a settings group, where users can input, and save their game preferences
-@dealer_hand_sum = 0
-@player_hand_sum = 0
+@dealer_hand_sum = @player_hand.inject(:+)
+@player_hand_sum = @player_hand.inject(:+)
 def deal
 	@n = 0
 	@deal_increment = 1

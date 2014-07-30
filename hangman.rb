@@ -63,3 +63,17 @@ if turns_left > 0
 end
 
 # still need to get the main block working, and hide/**** the player 1 entry or autogenerate content somehow
+
+
+# #Set players
+# dealer 
+# player
+
+#SHUFFLE
+deck = (10..10).to_a * 12 + (1..9).to_a * 4 +(11..11).to_a * 4
+print deck.shuffle!
+
+#while loop each round. Shuffle, deal play
+
+#DEAL
+n = deck[0]

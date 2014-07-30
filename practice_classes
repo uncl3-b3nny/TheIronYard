@@ -1,0 +1,34 @@
+class Items
+  attr_accessor :name
+  attr_accessor :price
+  attr_accessor :modifier
+
+   @@list_of_courses = []
+
+  def initialize
+    puts "#{name}"
+    self.name     = ""
+    self.price = []
+    self.modifier = []
+  end
+
+  def add_item
+    item = Item.new
+    @@list_of_items.push item
+  end
+
+  def self.access 
+    @@list_of_courses
+  end
+end
+
+
+carrot = Item.new
+name = carrot
+price = 1
+modifier = 2
+
+stick = Item.new
+name = stick
+price = 3
+modifier = 4

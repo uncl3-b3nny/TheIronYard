@@ -1,0 +1,100 @@
+Jims code
+class Horses
+ @@list_of_horses = []
+
+  attr_accessor :name
+  attr_accessor :position
+
+  def initialize
+    self.name = nil
+    self.position = 0
+  end
+
+  def self.add_horse(*horse_variables)
+    horse = Horses.new
+    
+    horse.name = horse_variables[0]
+
+    @@list_of_horses.push horse
+  end
+
+  def self.get_horses
+  @@list_of_horses
+  end
+
+  def self.add_user(*user_variables)
+    add_user = Horses.new
+    add_user.name = user_variables[0]
+
+    @@list_of_horses.push add_user
+  end
+
+
+  def self.display_data
+    puts "*" * 60
+    @@list_of_horses.each do |racer|
+        print "-" * racer.position
+        puts racer.name
+                          end
+  end
+
+  def self.position
+    position += rand(1..5)
+  end
+
+  def track
+  track = self.position.times{print"-"}
+  end
+
+
+horse1 = Horses.add_horse ("Jackrabbit")
+horse2 = Horses.add_horse ("Pokey")
+horse3 = Horses.add_horse ("Snips")
+user1 = Horses.add_user ("Jim")
+end
+
+Second Class: 
+require_relative 'Horses_class.rb'
+
+no_winner = true
+
+class Race 
+
+  attr_accessor :horses
+  attr_accessor :place
+
+  def begin_race
+    puts "And the Race has begun!"
+  end
+
+  def movement 
+    moving = Horses.track
+  end
+
+  def user_hack
+    if Horses.user1
+    
+  end
+  
+end
+end
+
+while no_winner != false
+
+racing = Race.new
+racing.begin_race
+Horses.display_data
+
+horse_array = Horses.get_horses
+
+horse_array.each do |horse|
+    horse.movement
+
+                end
+
+
+break
+
+
+end
+Hide full text
