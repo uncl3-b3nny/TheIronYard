@@ -6,7 +6,7 @@
   <% @patients.each do |x| %>
    <br>
    
-    <% full_name = x.first_name.downcase.capitalize + " " + x.last_name.downcase.capitalize %>
+    <% full_name = x.first_name.try(:downcase) + " " + x.last_name.try(:downcase) %>
 
    <li> 
      <label>Name:</label>

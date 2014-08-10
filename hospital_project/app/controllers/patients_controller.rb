@@ -1,5 +1,5 @@
 class PatientsController < ApplicationController
-    before_action :test_meth
+    before_action :new_patient
     before_action :find_patient, only: [:show, :edit, :update, :destroy, :transition]
 
   def show
@@ -11,7 +11,7 @@ class PatientsController < ApplicationController
 
   end
 
-  def create_patient
+  def create
     Patient.create patient_params
     if @patient.save == true
       redirect_to root_path
@@ -45,17 +45,12 @@ class PatientsController < ApplicationController
   end
 
 private
-  def test_meth
-    new_patient
-    create_patient
-  end
-
 
   def find_patient
     @patient = Patient.find params[:id]
   end
 
   def patient_params
-    params.require(:patient).permit(:first_name, :last_name, :malady, :date_of_birth, :gender)
+    params.require(:patient).permit(:first_name, :last_name, :malady, :gender, :date_of_birth, :workflow_state)
   end
 end
