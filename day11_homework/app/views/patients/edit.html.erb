@@ -1,0 +1,21 @@
+<h1>Patients#edit</h1>
+
+<%= form_for @patient do |x| %>
+<%= x.label :first_name, "First name:" %>
+<%= x.text_field :first_name %>
+  <br>
+<%= x.label :last_name, "Last name:"%>
+<%= x.text_field :last_name %>
+  <br>
+<%= x.label :malady, "Malady:" %>
+<%= x.text_field :malady %>
+  <br>
+<%= x.label :gender %>
+<%= x.text_field :gender %>
+  <br>
+<%= x.label :date_of_birth %>
+<%= x.text_field :date_of_birth %>
+
+  <br>
+  <%= x.submit %>
+<% end %>

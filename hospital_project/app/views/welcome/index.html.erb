@@ -1,0 +1,41 @@
+<h1>Patient records</h1>
+
+<%= link_to 'Enter a new patient', new_patient_path %>
+
+<ul>
+  <% @patients.each do |x| %>
+   <br>
+   
+    <% full_name = x.first_name.downcase.capitalize + " " + x.last_name.downcase.capitalize %>
+
+   <li> 
+     <label>Name:</label>
+      <%=link_to full_name, patient_path(x) %>
+   </li>
+
+      <label>Malady:</label>
+      <%= x.malady.downcase.capitalize %> 
+    <br>
+
+      <label>Gender:</label>
+      <%= x.gender %>
+    <br>
+
+      <label>Date of birth:</label>
+      <%= x.date_of_birth %>
+    <br>
+
+      <label>Status:</label>
+      <%= x.workflow_state %>
+    <br>
+
+  <%= link_to "Edit record", edit_patient_path(x) %>
+    <br>
+  
+  <%= link_to "Destroy record", patient_path(x), method: :delete %>
+    <br>
+
+  <% end %>
+</ul>
+
+<!-- sorry for the hideous formatting. I'll fix before the next submission -->

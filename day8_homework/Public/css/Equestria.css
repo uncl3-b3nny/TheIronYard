@@ -1,0 +1,78 @@
+*, *:before, *:after { box-sizing: border-box; }
+
+html, body, nav, .row, .main .size1of2 { width: 100% }
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+}
+
+.row { font-size: 0 }
+
+.nav{
+    border:1px solid #ccc;
+    border-width:1px 0;
+    list-style:none;
+    margin:0;
+    padding:5;
+    text-align:center;
+    color: black;
+    font-size: 14
+}
+.nav li{
+    display:inline;
+    padding:5%
+}
+.nav a{
+    display:inline-block;
+    border: 1px solid;
+    border-radius: 5;
+    padding:5px;
+}
+.button {
+  font: bold 11px Arial;
+  text-decoration: none;
+  background-color: #EEEEEE;
+  color: #333333;
+  padding: 2px 6px 2px 6px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+}
+.rightcolumn{
+  width: 300px;
+  height: 1000px;
+  display: inline-block;
+  position: relative;
+  left: 51px;
+  top: 90px;
+  /*border: 1px dashed blue;*/
+}
+
+.rightbox1{
+  width: 280px;
+  height: 250px;
+  position: relative;
+  top: 30px;
+  margin: 0 auto;
+}
+
+.rightbox2{
+  width: 280px;
+  height: 250px;
+  position: relative;
+  top: 70px;
+  margin: 0 auto
+
+}
+
+.rightbox3{
+  width: 280px;
+  height: 250px;
+  position: relative;
+  top: 110px;
+  margin: 0 auto;
+}
+ 
+ 

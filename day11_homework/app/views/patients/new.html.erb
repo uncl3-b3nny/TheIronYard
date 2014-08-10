@@ -1,0 +1,12 @@
+<h1>Patients#new</h1>
+<%= form_for @patient do |x| %>
+  <%= x.label :first_name %>
+  <%= x.text_field :first_name %>
+  <br>
+  <%= x.label :malady, "Malady" %>
+  <%= x.text_field :malady %>
+
+  <br>
+  <%= x.submit "Enter the que" %>
+<% end %>
+

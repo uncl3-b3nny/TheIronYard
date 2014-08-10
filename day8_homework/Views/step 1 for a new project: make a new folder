@@ -1,0 +1,6 @@
+step 1 for a new project: make a new folder
+
+step 2 for a new project: make sure you're using the right gemset
+rvm gemset list
+rvm gemset use (pick a gemset and enter it here)
+OR just use  

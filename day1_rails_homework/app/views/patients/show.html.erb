@@ -1,0 +1,30 @@
+<h2>Patient Details</h2>
+
+  <div>
+    <label>First name:</label>
+      <%= @patient.first_name.downcase.capitalize %>
+    </div>
+    <br>
+  <div>
+    <label>Last name:</label>
+      <%= @patient.last_name.downcase.capitalize %>
+    </div>
+    <br>
+  <div>
+    <label>Malady:</label>
+      <%= @patient.malady.downcase.capitalize %>
+    </div>
+    <br>
+  <div>
+    <label>Gender:</label>
+      <%= @patient.gender.downcase.capitalize %>
+    </div>
+    <br>
+  <div>
+    <label>Date of birth:</label>
+      <%= @patient.date_of_birth %>
+    </div>
+    <br>
+  <%= link_to "Edit patient record", edit_patient_path %>
+    <br>
+  <%= link_to "Back", root_path %>

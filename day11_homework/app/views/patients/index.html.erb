@@ -1,0 +1,16 @@
+<h1>Hello Index</h1>
+  <div> <%= link_to 'Create a new patient', new_patient_path %>
+  </div>
+<ul>
+
+  <% @patients.each do |x| %>
+     <br>
+     <li> <%=link_to x.first_name.downcase.capitalize, patient_path(x) %> <%= x.malady.downcase.capitalize %> </li>
+    <%= link_to "Edit patient info", edit_patient_path(x) %>
+    <br>
+    <%= link_to "Destroy record", patient_path(x), method: :delete %>
+      <br>
+  <% end %>
+</ul>
+
+<!-- sorry for the hideous formatting. I'll fix before the next submission -->

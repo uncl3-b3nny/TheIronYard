@@ -1,0 +1,13 @@
+<h1>
+  <%= @frogs.user_name %>
+ <br>
+  <%= @frogs.password %>
+  <br>
+  <%= @frogs.blog %>
+</h1>
+  <form action="/delete_a_frog/<%= @frogs.id %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete">
+  </form>
+
+  <a href="/">Back</a>

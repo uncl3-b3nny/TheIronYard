@@ -1,0 +1,10 @@
+<a href="/create_a_frog">Create a Frog</a>
+<br>
+<br>
+  <% @frogs.each do |frog| %>
+  <a href="/show_frog/<%= frog.id %>">
+  <%= frog.user_name %>
+  </a> 
+  <a href="/edit_a_frog/<%= frog.id %>">Edit</a>
+  <br>
+ <% end %>

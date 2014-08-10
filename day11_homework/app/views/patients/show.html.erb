@@ -1,0 +1,14 @@
+<h1>Patients#show</h1>
+First Name: <%= @patient.first_name %>
+<br>
+Last Name: <%= @patient.last_name %>
+<br>
+Malady: <%= @patient.malady %>
+<br>
+Gender: <%= @patient.gender %>
+<br>
+Date of birth: <%= @patient.date_of_birth %>
+<br>
+<%= link_to "Edit patient record", edit_patient_path %>
+<br>
+<%= link_to "Back", root_path %>
