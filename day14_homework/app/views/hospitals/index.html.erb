@@ -1,0 +1,28 @@
+<h1>Hospitals</h1>
+
+<%= link_to 'Enter a new hospital', new_hospital_path(@hospital) %>
+
+<ul>
+  <% @hospitals.each do |x| %>
+   <br>
+
+   <li> 
+     <label>Name:</label>
+      <%=link_to x.name, hospital_path(x) %>
+   </li>
+
+      <label>Location:</label>
+      <%= x.location %> 
+    <br>
+
+      <label>Beds:</label>
+      <%= x.beds.inspect %>
+    <br>
+
+  <%= link_to "Edit hospital", edit_hospital_path(x) %>
+    <br>
+  
+  <%= link_to "Destroy hospital", hospital_path(x), method: :delete %>
+    <br>
+  <% end %>
+</ul>

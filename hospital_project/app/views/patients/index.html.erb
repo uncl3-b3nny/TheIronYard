@@ -1,0 +1,57 @@
+<h1>Patient records</h1>
+
+<%= link_to 'Enter a new patient', new_hospital_patient_path(@hospital, @patient) %>
+<% n=0 %>
+<ul>
+  <% @patients.each do |x| %>
+   <br>
+   
+    <% full_name = x.first_name.try(:downcase) + " " + x.last_name.try(:downcase) %>
+
+   <li> 
+     <label>Name:</label>
+      <%=link_to full_name, patient_path(x) %>
+   </li>
+
+      <label>Malady:</label>
+      <%= x.malady.downcase.capitalize %> 
+    <br>
+
+      <label>Gender:</label>
+      <%= x.gender %>
+    <br>
+
+      <label>Date of birth:</label>
+      <%= x.date_of_birth %>
+    <br>
+
+      <label>Status:</label>
+      <%= x.workflow_state %>
+    <br>
+
+  <%= link_to "Edit record", edit_patient_path(x) %>
+    <br>
+  
+  <%= link_to "Destroy record", patient_path(x), method: :delete %>
+    <br>
+
+    <!-- workflow seems like a crappy way of branching logic. its not scalable because it doesn't mathematically define the relationships between states. You have to write gobs of logic. Instead, you could write a .each that corresponds to variables assigned to the ranges of allowable flows from one state to another, and pull your desired links out of an array when they match your criteria. This means you would write ONE loop, and then only have to input transitions into variable arrays that represent each state.(which would be very easy to copy and/or fill in ranges from one variable array to the next) 
+
+    ...this is probably already built somewhere, just like the scaffold.
+  -->
+
+    <% action_array = ["wait", "check_up", "x_ray", "surgery", "pay", "discharge"] %>
+    <% status_array = ["waiting", "checked_up", "x_rayed", "surgeryed", "paid", "discharged"] %>
+
+    <% status_array.each do |f| %>
+      <% if f == x.workflow_state %>
+        <% q = action_array[n] %>
+        <%= link_to q, eval("#{q}_patient_path(x)"), method: :put %>
+        <!-- need to add some complexity here to properly scrub inputs to avoid getting hacked. -->
+        <% n+=1 %>
+       <% else puts "discharged" %>
+      <% end %>
+    <% end %>
+
+  <% end %>
+</ul>

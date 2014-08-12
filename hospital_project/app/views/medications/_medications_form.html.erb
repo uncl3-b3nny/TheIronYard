@@ -1,0 +1,26 @@
+<%= form_for [@hospital, @patient, @medication] do |x| %>
+  <div><% if x.object.errors.messages.length > 0 %>
+    <% x.object.errors.messages.each do |key, value| %>
+      <% value.each do |message| %>
+        <%= key.capitalize %> <%= message %>
+         <br>
+      <% end %> 
+    <% end %>
+  <% end %>
+    </div>
+
+  <%= x.label :name, " Name:" %>
+  <%= x.text_field :name %>
+    <br>
+  <%= x.label :description, "Description:"%>
+  <%= x.text_field :description %>
+    <br>
+  <%= x.label :instructions, "Instructions:" %>
+  <%= x.text_field :instructions %>
+  
+  <br>
+    <%= x.submit "Save new medication" %>
+<% end %>
+
+<%= link_to "Back", hospital_patient_path(@hospital, @patient) %>
+
