@@ -1,0 +1,26 @@
+<%= form_for [@hospital] do |x| %>
+<!-- form_for is going to generate your action so you have to give it all of your routes. -->
+  <div><% if x.object.errors.messages.length > 0 %>
+    <% x.object.errors.messages.each do |key, value| %>
+      <% value.each do |message| %>
+        <%= key.capitalize %> <%= message %>
+         <br>
+      <% end %> 
+    <% end %>
+  <% end %>
+    </div>
+
+  <%= x.label :name, " Name:" %>
+  <%= x.text_field :name %>
+    <br>
+  <%= x.label :location, "Location:"%>
+  <%= x.text_field :location %>
+    <br>
+  <%= x.label :beds, "Beds:" %>
+  <%= x.text_field :beds %>
+  
+  <br>
+    <%= x.submit "Save hospital" %>
+<% end %>
+
+  <br>

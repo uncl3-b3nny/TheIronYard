@@ -1,0 +1,46 @@
+<h2>Create a new record</h2>
+
+<%= form_for [@hospital, @patient] do |x| %>
+<!-- form_for is going to generate your action so you have to give it all of your routes. -->
+  <div><% if x.object.errors.messages.length > 0 %>
+    <% x.object.errors.messages.each do |key, value| %>
+      <% value.each do |message| %>
+        <%= key.capitalize %> <%= message %>
+         <br>
+      <% end %> 
+    <% end %>
+  <% end %>
+    </div>
+
+  <%= x.label :first_name, "First name:" %>
+  <%= x.text_field :first_name %>
+    <br>
+  <%= x.label :last_name, "Last name:"%>
+  <%= x.text_field :last_name %>
+    <br>
+  <%= x.label :malady, "Malady:" %>
+  <%= x.text_field :malady %>
+    <br>
+    <%= x.label :workflow_state, "Status:" %>
+    <%= x.text_field :workflow_state %>
+    <!-- I need an options_for_select box here with all my possible statuses given the current state.(so maybe an if/then will also be necessary) It appears that the options_for_select function will be an easy way to select medications and link them to patients, because the parameters include the option value id which can correlate to another database object.
+  -->
+    <br>
+  <%= x.label :gender, "Gender:"%>
+  <%= x.radio_button :gender, 'Male', :checked => true %> 
+  <%= label :gender_male, 'Male' %>
+  <%= x.radio_button :gender, 'Female' %>
+  <%= label :gender_female, 'Female' %>
+    <br>
+  <%= x.label :date_of_birth, "Date of birth" %>
+  <%= x.date_select(:date_of_birth, start_year: 1800, end_year: 2014) %>
+<!-- I don't want to have to update my code every year. How can i get these dates to change with the times? -->
+    <br>
+    <%=  %>
+    <br>
+    <%= x.submit "Save patient record" %>
+<% end %>
+  <br>
+  <%=  %>
+  <br>
+<%= link_to "Back to list of patients", hospital_path(@hospital, method: :get) %>
