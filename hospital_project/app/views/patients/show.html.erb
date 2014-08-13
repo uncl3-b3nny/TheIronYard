@@ -36,13 +36,20 @@
         <br>
         <%= x.instructions %>
         <br>
-
-<%= link_to "Edit", edit_hospital_patient_medication_path(@hospital, @patient, x) %>
-    <br>
-
+        <%= link_to "Edit", edit_hospital_patient_medication_path(@hospital, @patient, x) %>
+        <br>
       <% end %>
   </div>
     <br>
+    
+  <div>
+    <label>Doctors:</label>
+    <% @patient.doctors.each do |doctor| %>
+      <%= doctor.first_name %>
+      <%= doctor.last_name %>
+    <% end %>
+  </div>
+      <br>
 
 <%= link_to "Add Medications", new_hospital_patient_medication_path(@hospital, @patient) %>
     <br>

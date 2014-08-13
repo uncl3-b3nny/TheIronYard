@@ -29,6 +29,15 @@
       <%= x.workflow_state %>
     <br>
 
+  <div>
+    <label>Doctors:</label>
+    <% x.doctors.each do |doctor| %>
+      <%= doctor.first_name %>
+      <%= doctor.last_name %>
+    <% end %>
+  </div>
+      <br>
+
   <%= link_to "Edit record", edit_hospital_patient_path(@hospital, x) %>
     <br>
   

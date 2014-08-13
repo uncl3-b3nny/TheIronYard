@@ -7,7 +7,8 @@ class CreatePatients < ActiveRecord::Migration
       t.string :gender
       t.date :date_of_birth
       t.string :workflow_state
-
+      t.string :facilities_provider
+      t.integer :hospital_id
       t.timestamps
     end
   end

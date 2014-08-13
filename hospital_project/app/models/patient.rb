@@ -1,6 +1,7 @@
 class Patient < ActiveRecord::Base
 
-belongs_to :hospital
+belongs_to :facilities_provider, :polymorphic => true
+has_many :doctors, :as => :healthcare_recipient
 has_many :medications
 
 validates :first_name, presence: true
