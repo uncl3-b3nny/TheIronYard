@@ -1,4 +1,5 @@
 class HospitalsController < ApplicationController
+  before_action :authenticate_user!
   def index
     @hospitals = Hospital.all
   end
@@ -24,7 +25,7 @@ class HospitalsController < ApplicationController
   def update
     @hospital = Hospital.find params[:id]
     @hospital.update_attributes hospital_params
-    redirect_to hospital_path(@hospital)
+    redirect_to hospitals_path(@hospital)
   end
 
   def destroy

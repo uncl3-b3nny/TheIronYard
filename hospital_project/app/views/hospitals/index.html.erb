@@ -1,7 +1,7 @@
 <h1>Hospitals</h1>
-
+<!-- 
 <%= link_to 'Enter a new hospital', new_hospital_path(@hospital) %>
-
+ -->
 <ul>
   <% @hospitals.each do |x| %>
    <br>
@@ -19,10 +19,12 @@
       <%= x.beds.inspect %>
     <br>
 
-  <%= link_to "Edit hospital", edit_hospital_path(x) %>
+<!--   <%= link_to "Edit hospital", edit_hospital_path(x) %>
     <br>
   
-  <%= link_to "Destroy hospital", hospital_path(x), method: :delete %>
-    <br>
+   <%= link_to "Destroy hospital", hospital_path(x), method: :delete %>
+    <br>  -->
   <% end %>
+
+  <%= link_to "Log out", destroy_user_session_path, method: :delete %>
 </ul>

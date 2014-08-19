@@ -36,8 +36,7 @@
       <%= doctor.last_name %>
     <% end %>
   </div>
-      <br>
-
+    <br>
   <%= link_to "Edit record", edit_hospital_patient_path(@hospital, x) %>
     <br>
   
@@ -48,7 +47,9 @@
 
     ...this is probably already built somewhere, just like the scaffold.
   -->
-
-
   <% end %>
+      <br>
+<%= link_to "Back", hospitals_path(@hospital) %>
 </ul>
+
+  <%= link_to "Log out", destroy_user_session_path, method: :delete %>
