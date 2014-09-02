@@ -1,55 +1,55 @@
 <h1>Patient records</h1>
-
-<%= link_to 'Enter a new patient', new_hospital_patient_path(@hospital) %>
-<% n=0 %>
-<ul>
-  <% @patients.each do |x| %>
-   <br>
-   
-    <% full_name = x.first_name.try(:downcase) + " " + x.last_name.try(:downcase) %>
-
-   <li> 
-     <label>Name:</label>
-      <%=link_to full_name, hospital_patient_path(@hospital, x) %>
-   </li>
-
-      <label>Malady:</label>
-      <%= x.malady.downcase.capitalize %> 
+<!-- I want to put an A-Z and a search bar across the top -->
+  <p><%= link_to 'Enter a new patient', new_hospital_patient_path(@hospital) %>
     <br>
+  </p> 
 
-      <label>Gender:</label>
-      <%= x.gender %>
-    <br>
+<% total_patients = 0 %>
 
-      <label>Date of birth:</label>
-      <%= x.date_of_birth %>
-    <br>
+<!-- HIdden field. Will hold params[:hospital_id] as the value -->
 
-      <label>Status:</label>
-      <%= x.workflow_state %>
-    <br>
+<%= hidden_field_tag "", params[:id], class: 'hospital_id' %>
+<%= text_field_tag '', '', class: "patient_search" %>
+<%= link_to "Search patients", 'javascript:void(0);', class: "search_patients btn btn-md btn-primary" %>
+<ul class="search_list"></ul>
 
-  <div>
-    <label>Doctors:</label>
-    <% x.doctors.each do |doctor| %>
-      <%= doctor.first_name %>
-      <%= doctor.last_name %>
-    <% end %>
-  </div>
-    <br>
-  <%= link_to "Edit record", edit_hospital_patient_path(@hospital, x) %>
-    <br>
-  
-  <%= link_to "Destroy record", hospital_patient_path(@hospital, x), method: :delete %>
-    <br>
 
-    <!-- workflow seems like a crappy way of branching logic. its not scalable because it doesn't mathematically define the relationships between states. You have to write gobs of logic. Instead, you could write a .each that corresponds to variables assigned to the ranges of allowable flows from one state to another, and pull your desired links out of an array when they match your criteria. This means you would write ONE loop, and then only have to input transitions into variable arrays that represent each state.(which would be very easy to copy and/or fill in ranges from one variable array to the next) 
+<div class="col-lg-10 col-lg-offset-1">
+  <table id="patients_table" class="tablesorter table-striped"> 
+    <thead>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Malady</th>
+      <th>Gender</th>
+      <th>Status</th> 
+    </thead> 
+    <tbody>
+    <% Patient.all.each_slice(5) do |y| %>       
+    <% total_patients += 1 %>
+      <% y.each do |z| %>
+        <tr class="<%= 'hidden' if total_patients >= 2 %> slice_<%= total_patients %> the_patient">
+          <% full_name = z.first_name.try(:downcase).capitalize + " " + z.last_name.try(:downcase).capitalize %>
+          <td><%= z.id %></td>
+          <td><%= link_to full_name, hospital_patient_path(@hospital, z) %></td>
+          <td><%= z.malady %></td>
+          <td><%= z.gender %></td>
+          <td><%= z.workflow_state %></td>
+        </tr>    
+      <% end %>
+    <% end %>  
+    </tbody> 
+  </table>          
+
+<% total_patients.times do |q| %>
+<%= link_to q + 1, "javascript:void(0);", class: "next_page" %>
+<% end %>
+
+
+<%= link_to "Back", hospitals_path(@hospital) %>
+</ul>
+  <br>
+
+      <!-- workflow seems like a crappy way of branching logic. its not scalable because it doesn't mathematically define the relationships between states. You have to write gobs of logic. Instead, you could write a .each that corresponds to variables assigned to the ranges of allowable flows from one state to another, and pull your desired links out of an array when they match your criteria. This means you would write ONE loop, and then only have to input transitions into variable arrays that represent each state.(which would be very easy to copy and/or fill in ranges from one variable array to the next) 
 
     ...this is probably already built somewhere, just like the scaffold.
   -->
-  <% end %>
-      <br>
-<%= link_to "Back", hospitals_path(@hospital) %>
-</ul>
-
-  <%= link_to "Log out", destroy_user_session_path, method: :delete %>

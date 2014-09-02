@@ -6,6 +6,7 @@ class PatientsController < ApplicationController
 
   def show
     @medications = Medication.all
+    @patients = Patient.where("make LIKE ?", "%#{params[:q]}%")
   end
 
   def new
@@ -16,8 +17,10 @@ class PatientsController < ApplicationController
     @patient = @hospital.patients.new(patient_params)
 
     if @patient.save == true
+      flash[:notice] = "Patient was successfully created"
       redirect_to hospital_path(@hospital, method: :get)
     else 
+      flash[:error] = "Patient was not successfully created"
       render :new
     end
   end

@@ -1,23 +1,31 @@
-<h1>Hospitals</h1>
+<h1>Locations</h1>
+<br>
+<!--       <div class="page-header">
+           <h1>Success!</h1>
+      </div>
+      <center><img src="/assets/success!_PNG_copy.png" class="img-responsive" alt="SUCCESS!!!"></center> 
+      This is how you include the wizard! -->
 <!-- 
 <%= link_to 'Enter a new hospital', new_hospital_path(@hospital) %>
  -->
-<ul>
-  <% @hospitals.each do |x| %>
-   <br>
+      <div class="row">
 
-   <li> 
-     <label>Name:</label>
-      <%=link_to x.name, hospital_path(x) %>
-   </li>
+        <% @hospitals.each_with_index do |x, index| %>
 
-      <label>Location:</label>
-      <%= x.location %> 
-    <br>
-
-      <label>Beds:</label>
-      <%= x.beds.inspect %>
-    <br>
+        <div class="col-sm-4 location">
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <center><h3 class="panel-title"><%=link_to x.name, hospital_path(x) %></h3></center>
+            </div>
+            <div class="panel-body"><center>
+              <label>Location:</label>
+              <%= x.location %> 
+              <br>
+              <label>Beds:</label>
+              <%= x.beds %>
+            </center></div>
+          </div>
+        </div>
 
 <!--   <%= link_to "Edit hospital", edit_hospital_path(x) %>
     <br>

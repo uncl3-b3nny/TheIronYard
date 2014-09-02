@@ -1,15 +1,57 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>HospitalProject</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-<%= yield %>
 
-</body>
+<html>
+  <head>
+    <title>Motiva</title>
+    <%= stylesheet_link_tag    'application', media: 'all'%>
+    <%= javascript_include_tag 'application' %>
+    <link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light+Two' rel='stylesheet' type='text/css'>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body role="document">
+
+      <div class="navbar navbar-inverse">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Motiva: Where Healing Begins</a>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="<%= is_link_active?('welcome') %>"> <%= link_to 'Locations', root_path %>
+  </li>
+              <li><a href="#contact">Contact</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li class="divider"></li>
+                  <li class="dropdown-header">Nav header</li>
+                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">One more separated link</a></li>
+                </ul>
+                          <%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+
+        </div>
+      </div>
+
+      <div class="container theme-showcase" role="main">
+        <%= flash[:notice] %>
+        <%= alert %>
+            <!-- Main jumbotron for a primary marketing message or call to action -->
+        
+            <center><%= yield %></center>
+       
+      </div>
+ 
+  </body>
 </html>

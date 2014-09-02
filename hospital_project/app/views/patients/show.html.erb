@@ -1,60 +1,71 @@
 <h2>Patient Details</h2>
-
-  <div>
-    <label>First name:</label>
-      <%= @patient.first_name.downcase.capitalize %>
-    </div>
-    <br>
-  <div>
-    <label>Last name:</label>
-      <%= @patient.last_name.downcase.capitalize %>
-    </div>
-    <br>
-  <div>
-    <label>Malady:</label>
-      <%= @patient.malady.downcase.capitalize %>
-    </div>
-    <br>
-  <div>
-    <label>Gender:</label>
-      <%= @patient.gender.downcase.capitalize %>
-    </div>
-    <br>
-  <div>
-    <label>Date of birth:</label>
-      <%= @patient.date_of_birth %>
-    </div>
-    <br>
-
-   <div>
-    <label>Medications:</label>
-      <% @patient.medications.each do |x| %>
-        <br>
-        <%= x.name %>
-        <br>
-        <%= x.description %>
-        <br>
-        <%= x.instructions %>
-        <br>
-        <%= link_to "Edit", edit_hospital_patient_medication_path(@hospital, @patient, x) %>
-        <br>
+<br>
+  <div class="row">
+    <div class="col-sm-4 location col-sm-offset-4">
+      <% if @patient.workflow_state == "waiting"  %>
+        <div class="panel panel-default"> 
+      <% elsif @patient.workflow_state == "checked_up" %>
+        <div class="panel panel-primary"> 
+      <% elsif @patient.workflow_state == "x_rayed" %>
+        <div class="panel panel-warning">      
+      <% elsif @patient.workflow_state == "had_surgery" %>
+        <div class="panel panel-danger"> 
+      <% elsif @patient.workflow_state == "paid" %>
+        <div class="panel panel-success">  
       <% end %>
-  </div>
-    <br>
-    
-  <div>
-    <label>Doctors:</label>
-    <% @patient.doctors.each do |doctor| %>
-      <%= doctor.first_name %>
-      <%= doctor.last_name %>
-    <% end %>
-  </div>
-      <br>
 
-<%= link_to "Add Medications", new_hospital_patient_medication_path(@hospital, @patient) %>
-    <br>
+        <div class="panel-heading">
+            <% full_name = @patient.first_name.try(:downcase).capitalize + " " + @patient.last_name.try(:downcase).capitalize %>
+            <center><h3 class="panel-title"><%= full_name %></h3></center>
+        </div>
 
-<%= link_to "Edit record", edit_hospital_patient_path(@hospital, @patient) %>
+        <div class="panel-body">
+          <center>
+            <label>Malady:</label>
+            <%= @patient.malady.downcase.capitalize %> 
+            <br>
+            <label>Gender:</label>
+            <%= @patient.gender %>
+            <br>
+            <label>Date of birth:</label>
+            <%= @patient.date_of_birth %>
+            <br>
+            <label>Status:</label>
+            <%= @patient.workflow_state %>
+            <br>
+            <label>Medications:</label>
+            <% @patient.medications.each do |x| %>
+              <br>
+              <%= x.name %>
+              <br>
+              <%= x.description %>
+              <br>
+              <%= x.instructions %>
+              <br>
+              <%= link_to "Edit", edit_hospital_patient_medication_path(@hospital, @patient, x) %>
+              <br>
+            <% end %>
+            <br>
+            <label>Doctors:</label>
+            <% @patient.doctors.each do |doctor| %>
+              <%= doctor.first_name %>
+              <%= doctor.last_name %>
+            <% end %>
+            <br>
+            <br>
+            <%= link_to "Add Medications", new_hospital_patient_medication_path(@hospital, @patient) %>
+            <br>
+            <%= link_to "Edit record", edit_hospital_patient_path(@hospital, @patient) %>
+            <br>
+            <br>
+            <%= link_to "Destroy record", hospital_patient_path(@hospital, @patient), method: :delete %>
+            <br>
+            <br>
+            <%= link_to "Back to list of patients", hospital_path(@hospital, method: :get) %>
+            <br>
+          </center>
+        </div>
+      </div> 
+    </div>
+  </div>           
     <br>
-
-<%= link_to "Back to list of patients", hospital_path(@hospital, method: :get) %>
