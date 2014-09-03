@@ -29,6 +29,7 @@ gem 'spring',        group: :development
 
 group :development, :test do 
   gem 'rspec-rails'
+  gem "factory_girl_rails", "~> 4.0"
 end
 
 # Use ActiveModel has_secure_password
@@ -51,8 +52,7 @@ gem 'faker'
 
 group :test do
   gem 'shoulda-matchers', require: false
-end
-
-group :test do
-  gem 'shoulda'
+  gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'database_cleaner'
 end

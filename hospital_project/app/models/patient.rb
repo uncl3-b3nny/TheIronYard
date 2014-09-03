@@ -1,7 +1,10 @@
 class Patient < ActiveRecord::Base
 
     def full_name
-      self.first_name.downcase.capitalize + " " + self.last_name.downcase.capitalize
+      puts self.first_name
+
+      puts self.last_name
+    "#{self.first_name.downcase.capitalize} #{self.last_name.downcase.capitalize}"
     end
 
 belongs_to :facilities_provider, :polymorphic => true
