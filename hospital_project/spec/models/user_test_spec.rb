@@ -1,15 +1,15 @@
 require 'rails_helper'
 
-RSpec.describe User, :type => :model do
+RSpec.describe Patient, :type => :model do
 
   it "should return the full name of a user" do 
 
-    chelimsky = User.new(first_name: "David", last_name: "Chelimsky")
+    patient = Patient.new(first_name: "David", last_name: "Chelimsky")
 
     # expect(User.full_name).to eq([chelimsky, lindeman])
     # this calls the class method
 
-    expect(chelimsky.full_name).to eq("David Chelimsky")
+    expect(patient.full_name).to eq("David Chelimsky")
   end
 
   # it "should test a helper with multiple parameter inputs"

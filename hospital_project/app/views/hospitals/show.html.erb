@@ -28,9 +28,8 @@
     <% total_patients += 1 %>
       <% y.each do |z| %>
         <tr class="<%= 'hidden' if total_patients >= 2 %> slice_<%= total_patients %> the_patient">
-          <% full_name = z.first_name.try(:downcase).capitalize + " " + z.last_name.try(:downcase).capitalize %>
           <td><%= z.id %></td>
-          <td><%= link_to full_name, hospital_patient_path(@hospital, z) %></td>
+          <td><%= link_to z.full_name, hospital_patient_path(@hospital, z) %></td>
           <td><%= z.malady %></td>
           <td><%= z.gender %></td>
           <td><%= z.workflow_state %></td>

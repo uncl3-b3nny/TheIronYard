@@ -1,5 +1,9 @@
 class Patient < ActiveRecord::Base
 
+    def full_name
+      self.first_name.downcase.capitalize + " " + self.last_name.downcase.capitalize
+    end
+
 belongs_to :facilities_provider, :polymorphic => true
 has_many :doctors, :as => :healthcare_recipient
 has_many :medications
