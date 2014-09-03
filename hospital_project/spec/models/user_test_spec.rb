@@ -14,6 +14,8 @@ RSpec.describe User, :type => :model do
 
   # it "should test a helper with multiple parameter inputs"
 
+  # it "should "
+
 end
 
 # why do they use an exclamation point
