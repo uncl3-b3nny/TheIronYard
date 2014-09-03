@@ -14,7 +14,6 @@ has_many :medications
 validates :first_name, presence: true
 validates :last_name, presence: true
 validates :malady, presence: true
-validates :gender, presence: true
 # validates :date_of_birth, presence: true
 
   include Workflow
