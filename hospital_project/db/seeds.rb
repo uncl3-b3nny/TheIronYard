@@ -11,3 +11,8 @@ fake_patients =
   10.times do 
     Patient.create([{first_name: Faker::Name.first_name,last_name: Faker::Name.last_name, malady: 'sick', workflow_state: 'waiting', facilities_provider_id: '2', facilities_provider_type: 'Hospital', gender: 'male'}])
   end
+
+
+
+
+  

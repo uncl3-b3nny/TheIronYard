@@ -7,6 +7,7 @@ class HospitalsController < ApplicationController
   def show
     @hospital = Hospital.find params[:id]
     @patients = @hospital.patients
+    @doctors = @hospital.doctors
   end
 
   def new
@@ -14,12 +15,18 @@ class HospitalsController < ApplicationController
   end
 
   def create
-    @hospitals = Hospital.create hospital_params
-    redirect_to hospitals_path
+    @hospital = Hospital.new hospital_params
+    if @hospital.save == true
+      flash[:notice] = "Hospital was successfully created"
+      redirect_to hospitals_path
+    else 
+      flash[:error] = "Hospital was not successfully created"
+      render :new
+    end
   end
 
   def edit
-   @hospital = Hospital.find params[:id]
+    @hospital = Hospital.find params[:id]
   end
 
   def update
@@ -34,7 +41,7 @@ class HospitalsController < ApplicationController
     redirect_to hospitals_path
   end
 
-private
+  private
 
   def hospital_params
     params.require(:hospital).permit(:name, :location, :beds)
