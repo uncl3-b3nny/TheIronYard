@@ -46,11 +46,11 @@ end
 # gem 'debugger', group: [:development, :test]
 gem 'validates_timeliness'
 gem 'workflow'
-# ruby "2.1"
+ruby "2.1.2"
 gem 'rails_12factor'
 gem 'devise'
 gem 'faker'
-# gem 'geocoder'
+gem 'geocoder'
 group :test do
   gem 'shoulda-matchers', require: false
   gem 'capybara'

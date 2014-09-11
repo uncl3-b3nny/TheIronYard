@@ -32,7 +32,7 @@ class HospitalsController < ApplicationController
   def update
     @hospital = Hospital.find params[:id]
     @hospital.update_attributes hospital_params
-    redirect_to hospitals_path(@hospital)
+    redirect_to hospital_path(@hospital)
   end
 
   def destroy
@@ -44,7 +44,7 @@ class HospitalsController < ApplicationController
   private
 
   def hospital_params
-    params.require(:hospital).permit(:name, :location, :beds)
+    params.require(:hospital).permit(:name, :beds, :full_street_address)
   end
 
 end

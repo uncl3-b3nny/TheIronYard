@@ -21,6 +21,5 @@ module ApplicationHelper
       @patients.map{ |obj| "<li class='#{obj}'>#{obj}</li>" }.join("").html_safe,
       class: "students_list"
     )
-    # "Hey Ben. HOw was your weekend?"
   end
 end

@@ -1,38 +1,36 @@
 <h1>Locations</h1>
 <br>
-<!--       <div class="page-header">
-           <h1>Success!</h1>
-      </div>
-      <center><img src="/assets/success!_PNG_copy.png" class="img-responsive" alt="SUCCESS!!!"></center> 
-      This is how you include the wizard! -->
-<!-- 
+
+<!-- This link allows a user to build a new branch location, by redirecting them to our hospital form -->
+
 <%= link_to 'Enter a new hospital', new_hospital_path(@hospital) %>
- -->
-      <div class="row">
+  <br>
+  <br>
 
-        <% @hospitals.each_with_index do |x, index| %>
+<!-- This nest of divs works with bootstrap to create tidy little panels where you display data you want to. I chose to display relevant information to my hospitals and allow a user to click on a location to see more details. These could be adapted to fit the needs of the user type such as doctors, patients, etc) -->
 
-        <div class="col-sm-4 location">
-          <div class="panel panel-info">
-            <div class="panel-heading">
-              <center><h3 class="panel-title"><%=link_to x.name, hospital_path(x) %></h3></center>
-            </div>
-            <div class="panel-body"><center>
-              <label>Location:</label>
-              <%= x.location %> 
-              <br>
-              <label>Beds:</label>
-              <%= x.beds %>
-            </center></div>
-          </div>
+<div class="row">
+  <% @hospitals.each do |x| %>
+    <div class="col-sm-4 location">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <center><h3 class="panel-title"><%=link_to x.name, hospital_path(x) %></h3></center>
         </div>
-
-<!--   <%= link_to "Edit hospital", edit_hospital_path(x) %>
-    <br>
-  
-   <%= link_to "Destroy hospital", hospital_path(x), method: :delete %>
-    <br>  -->
+        <div class="panel-body">
+          <center>
+          <label>Location:</label>
+          <%= x.full_street_address %> 
+          <br>
+          <label>Beds:</label>
+          <%= x.beds %>
+          <br>
+          <%= link_to "Edit hospital", edit_hospital_path(x) %>
+          </center>
+        </div>
+      </div>
+    </div>
   <% end %>
-
+</div>
   <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+    <!-- I include the log out link on every page so that a user may end his or her session whenever they need to to -->
 </ul>
